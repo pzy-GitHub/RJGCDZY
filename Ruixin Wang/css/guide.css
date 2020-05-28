@@ -1,0 +1,292 @@
+/* 涓嬭浇浜岀淮鐮� Start */
+.code__down-wrap {
+    width: 624px;
+    height: 304px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.pop__inner {
+    padding: 40px;
+}
+.fillet-tit {
+    font-size: 18px;
+    line-height: 100%;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+ .fillet-content th {
+    color: #808080;
+    background-color: #edeff0;
+}
+ .fillet-content tr td {
+    height: 36px;
+    line-height: 34px;
+}
+.downLoad-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0;
+    border: none;
+    background: url("/images/newimg/link-code-pop/download.png") no-repeat center;
+}
+.downLoad-icon:hover {
+    background-image: url("/images/newimg/link-code-pop/download-hover.png")
+} 
+/* 涓嬭浇浜岀淮鐮� End */
+
+
+/* 鑷畾涔夋潵婧� Start */
+.customize__wrap {
+    width: 766px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.obj__tit {
+    position: relative;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 20px 0 8px;
+}
+.obj__tit .word {
+    padding-left: 14px;
+}
+.obj__tit .dot-icon {
+    position: absolute;
+    top: 7px;
+    left: 0;
+	width: 8px;
+    height: 8px;
+	background: url("/images/newimg/dot.png") no-repeat center;
+}
+.customize__body  th,
+.customize__body  .fillet-content td {
+    font-size: 12px;
+}
+.customize__body .source__name {
+    overflow: hidden;
+}
+.customize__body .source__name input[type="text"] {
+    width: 340px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 25px;
+    padding: 0 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #abafb2;
+}
+.customize__body .source__name input[type="submit"] {
+    width: 90px;
+    height: 30px;
+    font-size: 14px;
+}
+.customize__body .source__link {
+    font-size: 12px;
+    padding: 0 10px;
+    overflow: hidden;
+}
+.customize__body .source__link input[type="text"] {
+    width: 244px;
+    height: 22px;
+    padding: 0 5px;
+    border-radius: 4px;
+    border: 1px solid #abafb2;
+}
+.customize__body .source__link input[type="button"],
+.customize__body .source__link .access {
+    width: 42px;
+}
+.customize__body .source__link input[type="button"]:hover,
+.customize__body .source__link .access:hover {
+    color: #1ea0fa;
+    border-color:#1ea0fa;
+    background-color: #fff;
+}
+.customize__body .source__link .code {
+    width: 54px;
+}
+.customize__body .source__link .btn {
+    height: 22px;
+    padding: 0;
+    line-height: 20px;
+    margin-left: 6px;
+    vertical-align: baseline;
+}
+.customize__body  .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0;
+    background-image: url("/images/newimg/link-code-pop/particulars.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.customize__body  .chartBar-icon {
+    background-image: url("/images/newimg/link-code-pop/particulars.png");
+}
+.customize__body  .chartBar-icon:hover {
+    background-image: url("/images/newimg/link-code-pop/particulars-hover.png");
+}
+.customize__body  .viewList-icon {
+    background-image: url("/images/newimg/link-code-pop/statistics.png");
+}
+.customize__body  .viewList-icon:hover {
+    background-image: url("/images/newimg/link-code-pop/statistics-hover.png");
+}
+
+.customize__body  .delete2-icon {
+    background-image: url("/images/newimg/link-code-pop/delete2.png");
+}
+
+
+.customize__body  .delete-icon {
+    background-image: url("/images/newimg/link-code-pop/delete.png");
+}
+.customize__body  .delete-icon:hover {
+    background-image: url("/images/newimg/link-code-pop/delete-hover.png");
+}
+
+
+.customize__body .customize__choose {
+    font-size: 14px;
+}
+.customize__body .customize__choose .choose__items {
+    margin-right: 30px;
+}
+/* 鑷畾涔夋潵婧� End */
+
+/* 鑷畾涔夎繛鎺ュ弬鏁� Start */
+.obj__tit .question-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 0;
+    margin-left: 6px;
+    vertical-align: -2px;
+    background: url("/images/newimg/question.png") no-repeat center;
+}
+.obj__tit .question-icon:hover {
+    background-image: url("/images/newimg/question-mark.png");
+}
+.customize__wrap .link__parameters input[type="text"] {
+    height: 30px;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 25px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #abafb2;
+}
+.customize__wrap .link__parameters .read-link {
+    width: 390px;
+    *width: 364px;
+    background-color: #f2f4f5;
+}
+.customize__wrap .link__parameters .enter {
+    width: 186px;
+    *width: 160px;
+    background-color: #fff;
+}
+.customize__wrap .link__parameters .copy-link {
+    width: 90px;
+    height: 30px;
+    font-size: 14px;
+}
+.ie8 .customize__wrap .wjx__templet__beautifyInput INPUT[type='checkbox'] {
+    top: 2px;
+}
+/* 鑷畾涔夎繛鎺ュ弬鏁� End */
+
+
+
+/* beautify input START */
+/* --------------------  Checkboxes and Radio inputs  -------------------- */	
+.wjx__templet__beautifyInput input[type="radio"],  
+.wjx__templet__beautifyInput input[type="checkbox"] {
+	position: absolute;
+	left: -999em;
+    *position:static;
+}
+.wjx__templet__beautifyInput label:before {
+	content: "";
+	display: inline-block;
+	position: relative;
+	top: 0.16em;
+	left: -2px;
+	width: 16px;
+	height: 16px;
+	background-image: url("/images/newimg/dim-set/radio-check.png");
+}
+.wjx__templet__beautifyInput input[type="checkbox"] + label:before {
+	background-position: 0 -17px;
+}
+.wjx__templet__beautifyInput input[type="checkbox"]:checked + label:before {
+	background-position: 0 0;
+}
+.wjx__templet__beautifyInput input[type="checkbox"]:disabled + label:before {
+	background-position: 0 -34px;
+}
+.wjx__templet__beautifyInput input[type="radio"] + label:before {
+	background-position: -19px -17px;
+}
+.wjx__templet__beautifyInput input[type="radio"]:checked + label:before {
+	background-position: -19px 0;
+}
+/* Remove the custom styling for IE 7-8 */
+		
+.ie8 .wjx__templet__beautifyInput label:before {
+	display: none;
+	content: none;
+}
+.ie8 .wjx__templet__beautifyInput input[type="checkbox"],  
+.ie8 .wjx__templet__beautifyInput input[type="radio"],  
+.ie7 .wjx__templet__beautifyInput input[type="checkbox"],  
+.ie7 .wjx__templet__beautifyInput input[type="radio"] {
+	position: static;
+	left: 0;
+}
+.ie8 .wjx__templet__beautifyInput input[type="checkbox"],  
+.ie8 .wjx__templet__beautifyInput input[type="radio"] {
+	position: relative;
+	top: 5px;
+	margin-right: 0.5em;
+}
+.wjx__templet__beautifyInput input[type="text"]:focus, 
+.wjx__templet__beautifyInput textarea:focus {
+	border-color: #000;
+}
+a.FAQ-icon {
+	width: 14px;
+	height: 14px;
+	margin-top: 5px;
+	margin-right: 0;
+	background: url("/images/newimg/online-exam/doubt-nor.png") no-repeat center;
+}
+a:hover.FAQ-icon {
+	background: url("/images/newimg/online-exam/doubt-pre.png") no-repeat center;
+}
+/* beautify input END */
+
+ .linkinput
+{
+    width:260px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #333333;
+}
+ a.linkinput:active, a.linkinput:hover
+ {
+     color: #333333;
+ }
+ .dim-set__icon-modify {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    cursor: pointer;
+    background: url(/images/newimg/dim-set/modify.png) no-repeat center;
+    margin: 0 6px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+}

@@ -175,7 +175,7 @@
                         返回我的问卷
                     </div>
                 </a>
-                <a class="nav-items" href="">
+                <a class="nav-items" href="designQuestionnaire.jsp">
                     <div class="items-box">
                         <i class="icon testDesign-icon"></i>
                     </div>
@@ -183,7 +183,7 @@
                     <span class="items-name">设计问卷</span>
                     <em class="caret-left"></em>
                 </a>
-                <a class="nav-items" href="" >
+                <a class="nav-items" href="sendQuestionnaire.jsp" >
                     <div class="items-box">
                         <i class="icon issusPapers-icon"></i>
                     </div>
@@ -331,339 +331,348 @@
 <script type="text/javascript">
 (function ($) {
 var oTable;//定义变量名，用于存放dataTable对象，一般定义为全局的比较好
+var status=<%=session.getAttribute("status")%>
+var userID=<%=session.getAttribute("userID")%>
+if(userID!=null){
+	if(parseInt(status)==1 || parseInt(status)==2){
+		//定义一个函数：用于初始化datatable  
+		  function initialDataTable() {
+		  	//使用客户端分页，一次性拉去所有数据
+		      $.ajax({//使用ajax的方式获取
+		          url:"AnswerQueryServlet",//异步请求的接口地址
+		          type:"post",//请求方式
+		          dataType:"json",//期待的数据返回类型
+		          async:true,//是否异步
+		          data:{
+		          	'ID':1,
+		            'answerQueryType':2
+		          },
+		          success:function (data) {//服务器响应成功后执行的回调
+		              //初始化datatable
+		              if (typeof oTable != "undefined"){
+		                  //如果已经被实例化，则销毁再实例化
+		                  oTable.fnDestroy();
+		              }
+		          	  var resultList=data
+		          	  
+			          	var columnsArray=[
+			                {
+			                    "mData":"hour",//读取数组的对象中的id属性
+			                    "sTitle":"小时",//表头
+			                    "width":"33.3%"
+			                },
+			                {
+			                    "mData":"count",
+			                    "sTitle":"总数",
+			                    "width":"33.3%"
+			                },
+			                {
+			                    "mData":"rate",
+			                    "sTitle":"百分比",
+			                    "width":"33.4%"
+			                }
+			                
+			            ]
+		          	  
+		          	  var hourArray=new Array(24).fill(0)
+		          	  var sum=0
+		              for(var i=0;i<resultList.length;++i){
+			           	  var submitTime=resultList[i]['submitTime']
+			           	  var date=new Date(submitTime)
+			           	  hourArray[date.getHours()]=hourArray[date.getHours()]+1
+			           	  sum=sum+1
+		              }
+		          	  console.log(hourArray)
+		          	  
+		          	  var result=[]
+		           	  for(var j=0;j<hourArray.length;++j){
+		           		  var obj=new Object()
+		           		  obj['hour']=j
+		           		  obj['count']=hourArray[j]
+		           		  obj['rate']=String(hourArray[j]/sum*100)+'%'
+		           		  result.push(obj)
+		           		  
+		           	  }
+		          	  console.log(result)
+		              
+		              oTable = $("#bootstrap-data-table-export").dataTable({//注意#infoTable是需创建为dataTable的表格,使用jQuery选择器
+		                  "bPaginate":true,//是否翻页功能
+		                  "sServerMethod":"POST",//若使用服务端分页，则设置请求方式为“POST”，可改
+		                  "bServerSide":false,//是否开启服务端分页(不开就是客户端分页)
+		                  "bProcessing":true,//是否显示加载ing
+		                  "bFilter":false,//是否开启过滤
+		                  "bSort":true,//是否开启排序
+		                  "searching":true,//是否开启搜索功能
+		                  "data":result,//若使用客户端分页，则将表格的数据填写到data属性中，需要数组,数组里面要求是对象
+		                  "aoColumns":columnsArray,
+		                  
+		              });
+		          	  
+		          	var question1_pie=echarts.init(document.getElementById('question1_pie'),'light')
+		            question1_pie.setOption({
+		                        toolbox:{
+		                                    feature:{
+		                                        saveAsImage:{
+		                                            show:true
+		                                        }
+		                                    },
+		                                    right: '20%'
+		                                },
+		                        series : [
+		                            {
+		                                type: 'pie',    // 设置图表类型为饼图
+		                                radius: '75%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+		                                data:[          // 数据数组，name 为数据项名称，value 为数据项值
+		                        
+		                                    {value:hourArray[0], name:'0点'},
+		                                    {value:hourArray[1], name:'1点'},
+		                                    {value:hourArray[2], name:'2点'},
+		                                    {value:hourArray[3], name:'3点'},
+		                                    {value:hourArray[4], name:'4点'},
+		                                    {value:hourArray[5], name:'5点'},
+		                                    {value:hourArray[6], name:'6点'},
+		                                    {value:hourArray[7], name:'7点'},
+		                                    {value:hourArray[8], name:'8点'},
+		                                    {value:hourArray[9], name:'9点'},
+		                                    {value:hourArray[10], name:'10点'},
+		                                    {value:hourArray[11], name:'11点'},
+		                                    {value:hourArray[12], name:'12点'},
+		                                    {value:hourArray[13], name:'13点'},
+		                                    {value:hourArray[14], name:'14点'},
+		                                    {value:hourArray[15], name:'15点'},
+		                                    {value:hourArray[16], name:'16点'},
+		                                    {value:hourArray[17], name:'17点'},
+		                                    {value:hourArray[18], name:'18点'},
+		                                    {value:hourArray[19], name:'19点'},
+		                                    {value:hourArray[20], name:'20点'},
+		                                    {value:hourArray[21], name:'21点'},
+		                                    {value:hourArray[22], name:'22点'},
+		                                    {value:hourArray[23], name:'23点'}
+		                                ],
+		                                itemStyle: {
+		                                    emphasis: {
+		                                        shadowBlur: 10,
+		                                        shadowOffsetX: 0,
+		                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                                    },
+		                                    normal:{ 
+		                                        label:{ 
+		                                            show: true, 
+		                                            formatter: '{b} : {c} ({d}%)' 
+		                                        }, 
+		                                        labelLine :{show:true} 
+		                                    } 
+		                                }
+		                            }
+		                        ]
+		                    })
+		            
+		            var question1_circle=echarts.init(document.getElementById('question1_circle'),'light')
+		            question1_circle.setOption({
+		                        toolbox: {
+		                            feature:{
+		                                saveAsImage:{
+		                                    show:true
+		                                }
+		                            },
+		                            right: '20%'
+		                        },
+		                        series : [
+		                            {
+		                            type: 'pie',    // 设置图表类型为饼图
+		                            radius:  ['50%', '70%'],  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+		                            data:[          // 数据数组，name 为数据项名称，value 为数据项值
+		                            	{value:hourArray[0], name:'0点'},
+		                                {value:hourArray[1], name:'1点'},
+		                                {value:hourArray[2], name:'2点'},
+		                                {value:hourArray[3], name:'3点'},
+		                                {value:hourArray[4], name:'4点'},
+		                                {value:hourArray[5], name:'5点'},
+		                                {value:hourArray[6], name:'6点'},
+		                                {value:hourArray[7], name:'7点'},
+		                                {value:hourArray[8], name:'8点'},
+		                                {value:hourArray[9], name:'9点'},
+		                                {value:hourArray[10], name:'10点'},
+		                                {value:hourArray[11], name:'11点'},
+		                                {value:hourArray[12], name:'12点'},
+		                                {value:hourArray[13], name:'13点'},
+		                                {value:hourArray[14], name:'14点'},
+		                                {value:hourArray[15], name:'15点'},
+		                                {value:hourArray[16], name:'16点'},
+		                                {value:hourArray[17], name:'17点'},
+		                                {value:hourArray[18], name:'18点'},
+		                                {value:hourArray[19], name:'19点'},
+		                                {value:hourArray[20], name:'20点'},
+		                                {value:hourArray[21], name:'21点'},
+		                                {value:hourArray[22], name:'22点'},
+		                                {value:hourArray[23], name:'23点'}
+		                            ],
+		                            itemStyle: {
+		                                emphasis: {
+		                                    shadowBlur: 10,
+		                                    shadowOffsetX: 0,
+		                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                                },
+		                                normal:{ 
+		                                    label:{ 
+		                                        show: true, 
+		                                        formatter: '{b} : {c} ({d}%)' 
+		                                    }, 
+		                                    labelLine :{show:true} 
+		                                } 
+		                            }
+		                        }
+		                        ]
+		                    })
+		            var question1_bar=echarts.init(document.getElementById('question1_bar'),'light')
+		            question1_bar.setOption({
+		                        toolbox: {
+		                            show : true,
+		                            feature:{
+		                                saveAsImage:{
+		                                    show:true
+		                                }
+		                            },
+		                            right: '20%'
+		                        },
+		                        xAxis : [ {
+		                            type : 'category',
+		                            data : [ "0点", "1点","2点", "3点","4点", "5点","6点", "7点","8点", "9点","10点", "11点","12点", "13点","14点", "15点","16点", "17点","18点", "19点","20点", "21点","22点", "23点"]
+		                        } ],
+		                        yAxis : [ {
+		                            type : 'value'
+		                        } ],
+		                        series : [ {
+		                            "name" : "样本量",
+		                            "type" : "bar",
+		                            "data" : hourArray,
+		                            
+		                            itemStyle: {
+		                                normal: {
+		                                    label: {
+		                                        show: true, //开启显示
+		                                        position: 'top', //在上方显示
+		                                        textStyle: { //数值样式
+		                                            color: 'black',
+		                                            fontSize: 16
+		                                        }
+		                                    }
+		                                }
+		                            }
 
-//定义一个函数：用于初始化datatable  
-  function initialDataTable() {
-  	//使用客户端分页，一次性拉去所有数据
-      $.ajax({//使用ajax的方式获取
-          url:"AnswerQueryServlet",//异步请求的接口地址
-          type:"post",//请求方式
-          dataType:"json",//期待的数据返回类型
-          async:true,//是否异步
-          data:{
-          	'ID':1,
-            'answerQueryType':2
-          },
-          success:function (data) {//服务器响应成功后执行的回调
-              //初始化datatable
-              if (typeof oTable != "undefined"){
-                  //如果已经被实例化，则销毁再实例化
-                  oTable.fnDestroy();
-              }
-          	  var resultList=data
-          	  
-	          	var columnsArray=[
-	                {
-	                    "mData":"hour",//读取数组的对象中的id属性
-	                    "sTitle":"小时",//表头
-	                    "width":"33.3%"
-	                },
-	                {
-	                    "mData":"count",
-	                    "sTitle":"总数",
-	                    "width":"33.3%"
-	                },
-	                {
-	                    "mData":"rate",
-	                    "sTitle":"百分比",
-	                    "width":"33.4%"
-	                }
-	                
-	            ]
-          	  
-          	  var hourArray=new Array(24).fill(0)
-          	  var sum=0
-              for(var i=0;i<resultList.length;++i){
-	           	  var submitTime=resultList[i]['submitTime']
-	           	  var date=new Date(submitTime)
-	           	  hourArray[date.getHours()]=hourArray[date.getHours()]+1
-	           	  sum=sum+1
-              }
-          	  console.log(hourArray)
-          	  
-          	  var result=[]
-           	  for(var j=0;j<hourArray.length;++j){
-           		  var obj=new Object()
-           		  obj['hour']=j
-           		  obj['count']=hourArray[j]
-           		  obj['rate']=String(hourArray[j]/sum*100)+'%'
-           		  result.push(obj)
-           		  
-           	  }
-          	  console.log(result)
-              
-              oTable = $("#bootstrap-data-table-export").dataTable({//注意#infoTable是需创建为dataTable的表格,使用jQuery选择器
-                  "bPaginate":true,//是否翻页功能
-                  "sServerMethod":"POST",//若使用服务端分页，则设置请求方式为“POST”，可改
-                  "bServerSide":false,//是否开启服务端分页(不开就是客户端分页)
-                  "bProcessing":true,//是否显示加载ing
-                  "bFilter":false,//是否开启过滤
-                  "bSort":true,//是否开启排序
-                  "searching":true,//是否开启搜索功能
-                  "data":result,//若使用客户端分页，则将表格的数据填写到data属性中，需要数组,数组里面要求是对象
-                  "aoColumns":columnsArray,
-                  
-              });
-          	  
-          	var question1_pie=echarts.init(document.getElementById('question1_pie'),'light')
-            question1_pie.setOption({
-                        toolbox:{
-                                    feature:{
-                                        saveAsImage:{
-                                            show:true
-                                        }
-                                    },
-                                    right: '20%'
-                                },
-                        series : [
-                            {
-                                type: 'pie',    // 设置图表类型为饼图
-                                radius: '75%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
-                                data:[          // 数据数组，name 为数据项名称，value 为数据项值
-                        
-                                    {value:hourArray[0], name:'0点'},
-                                    {value:hourArray[1], name:'1点'},
-                                    {value:hourArray[2], name:'2点'},
-                                    {value:hourArray[3], name:'3点'},
-                                    {value:hourArray[4], name:'4点'},
-                                    {value:hourArray[5], name:'5点'},
-                                    {value:hourArray[6], name:'6点'},
-                                    {value:hourArray[7], name:'7点'},
-                                    {value:hourArray[8], name:'8点'},
-                                    {value:hourArray[9], name:'9点'},
-                                    {value:hourArray[10], name:'10点'},
-                                    {value:hourArray[11], name:'11点'},
-                                    {value:hourArray[12], name:'12点'},
-                                    {value:hourArray[13], name:'13点'},
-                                    {value:hourArray[14], name:'14点'},
-                                    {value:hourArray[15], name:'15点'},
-                                    {value:hourArray[16], name:'16点'},
-                                    {value:hourArray[17], name:'17点'},
-                                    {value:hourArray[18], name:'18点'},
-                                    {value:hourArray[19], name:'19点'},
-                                    {value:hourArray[20], name:'20点'},
-                                    {value:hourArray[21], name:'21点'},
-                                    {value:hourArray[22], name:'22点'},
-                                    {value:hourArray[23], name:'23点'}
-                                ],
-                                itemStyle: {
-                                    emphasis: {
-                                        shadowBlur: 10,
-                                        shadowOffsetX: 0,
-                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                    },
-                                    normal:{ 
-                                        label:{ 
-                                            show: true, 
-                                            formatter: '{b} : {c} ({d}%)' 
-                                        }, 
-                                        labelLine :{show:true} 
-                                    } 
-                                }
-                            }
-                        ]
-                    })
-            
-            var question1_circle=echarts.init(document.getElementById('question1_circle'),'light')
-            question1_circle.setOption({
-                        toolbox: {
-                            feature:{
-                                saveAsImage:{
-                                    show:true
-                                }
-                            },
-                            right: '20%'
-                        },
-                        series : [
-                            {
-                            type: 'pie',    // 设置图表类型为饼图
-                            radius:  ['50%', '70%'],  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
-                            data:[          // 数据数组，name 为数据项名称，value 为数据项值
-                            	{value:hourArray[0], name:'0点'},
-                                {value:hourArray[1], name:'1点'},
-                                {value:hourArray[2], name:'2点'},
-                                {value:hourArray[3], name:'3点'},
-                                {value:hourArray[4], name:'4点'},
-                                {value:hourArray[5], name:'5点'},
-                                {value:hourArray[6], name:'6点'},
-                                {value:hourArray[7], name:'7点'},
-                                {value:hourArray[8], name:'8点'},
-                                {value:hourArray[9], name:'9点'},
-                                {value:hourArray[10], name:'10点'},
-                                {value:hourArray[11], name:'11点'},
-                                {value:hourArray[12], name:'12点'},
-                                {value:hourArray[13], name:'13点'},
-                                {value:hourArray[14], name:'14点'},
-                                {value:hourArray[15], name:'15点'},
-                                {value:hourArray[16], name:'16点'},
-                                {value:hourArray[17], name:'17点'},
-                                {value:hourArray[18], name:'18点'},
-                                {value:hourArray[19], name:'19点'},
-                                {value:hourArray[20], name:'20点'},
-                                {value:hourArray[21], name:'21点'},
-                                {value:hourArray[22], name:'22点'},
-                                {value:hourArray[23], name:'23点'}
-                            ],
-                            itemStyle: {
-                                emphasis: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                },
-                                normal:{ 
-                                    label:{ 
-                                        show: true, 
-                                        formatter: '{b} : {c} ({d}%)' 
-                                    }, 
-                                    labelLine :{show:true} 
-                                } 
-                            }
-                        }
-                        ]
-                    })
-            var question1_bar=echarts.init(document.getElementById('question1_bar'),'light')
-            question1_bar.setOption({
-                        toolbox: {
-                            show : true,
-                            feature:{
-                                saveAsImage:{
-                                    show:true
-                                }
-                            },
-                            right: '20%'
-                        },
-                        xAxis : [ {
-                            type : 'category',
-                            data : [ "0点", "1点","2点", "3点","4点", "5点","6点", "7点","8点", "9点","10点", "11点","12点", "13点","14点", "15点","16点", "17点","18点", "19点","20点", "21点","22点", "23点"]
-                        } ],
-                        yAxis : [ {
-                            type : 'value'
-                        } ],
-                        series : [ {
-                            "name" : "样本量",
-                            "type" : "bar",
-                            "data" : hourArray,
-                            
-                            itemStyle: {
-                                normal: {
-                                    label: {
-                                        show: true, //开启显示
-                                        position: 'top', //在上方显示
-                                        textStyle: { //数值样式
-                                            color: 'black',
-                                            fontSize: 16
-                                        }
-                                    }
-                                }
-                            }
+		                        } ]
+		                    })
 
-                        } ]
-                    })
+		            var question1_line=echarts.init(document.getElementById('question1_line'),'light')
+		            question1_line.setOption({
+		                        toolbox: {
+		                            show : true,
+		                            feature:{
+		                                saveAsImage:{
+		                                    show:true
+		                                }
+		                            },
+		                            right: '20%'
+		                        },
+		                        xAxis : [ {
+		                            type : 'category',
+		                            data : [ "0点", "1点","2点", "3点","4点", "5点","6点", "7点","8点", "9点","10点", "11点","12点", "13点","14点", "15点","16点", "17点","18点", "19点","20点", "21点","22点", "23点"]
+		                        } ],
+		                        yAxis : [ {
+		                            type : 'value'
+		                        } ],
+		                        series : [ {
+		                            "name" : "样本量",
+		                            "type" : "line",
+		                            "data" : hourArray,
+		                            
+		                            itemStyle: {
+		                                normal: {
+		                                    label: {
+		                                        show: true, //开启显示
+		                                        position: 'right', //在上方显示
+		                                        textStyle: { //数值样式
+		                                            color: 'black',
+		                                            fontSize: 16
+		                                        }
+		                                    }
+		                                }
+		                            }
 
-            var question1_line=echarts.init(document.getElementById('question1_line'),'light')
-            question1_line.setOption({
-                        toolbox: {
-                            show : true,
-                            feature:{
-                                saveAsImage:{
-                                    show:true
-                                }
-                            },
-                            right: '20%'
-                        },
-                        xAxis : [ {
-                            type : 'category',
-                            data : [ "0点", "1点","2点", "3点","4点", "5点","6点", "7点","8点", "9点","10点", "11点","12点", "13点","14点", "15点","16点", "17点","18点", "19点","20点", "21点","22点", "23点"]
-                        } ],
-                        yAxis : [ {
-                            type : 'value'
-                        } ],
-                        series : [ {
-                            "name" : "样本量",
-                            "type" : "line",
-                            "data" : hourArray,
-                            
-                            itemStyle: {
-                                normal: {
-                                    label: {
-                                        show: true, //开启显示
-                                        position: 'right', //在上方显示
-                                        textStyle: { //数值样式
-                                            color: 'black',
-                                            fontSize: 16
-                                        }
-                                    }
-                                }
-                            }
+		                        } ]
+		                    })
+		            
+		            $("#question1_table_button").click(function(){
+		                $("#question1_pie").css("display","none")
+		                $("#question1_circle").css("display","none")
+		                $("#question1_bar").css("display","none")
+		                $("#question1_line").css("display","none")
+		            })
+		            $("#question1_pie_button").click(function(){
+		                $("#question1_circle").css("display","none")
+		                $("#question1_bar").css("display","none")
+		                $("#question1_line").css("display","none")
+		                $("#question1_pie").css("display","block")
+		            })
+		            $("#question1_circle_button").click(function(){
+		                $("#question1_pie").css("display","none")
+		                $("#question1_bar").css("display","none")
+		                $("#question1_line").css("display","none")
+		                $("#question1_circle").css("display","block")
+		            })
+		            $("#question1_bar_button").click(function(){
+		                $("#question1_pie").css("display","none")
+		                $("#question1_circle").css("display","none")
+		                $("#question1_line").css("display","none")
+		                $("#question1_bar").css("display","block")
+		            })
+		            $("#question1_line_button").click(function(){
+		                $("#question1_pie").css("display","none")
+		                $("#question1_circle").css("display","none")
+		                $("#question1_bar").css("display","none")
+		                $("#question1_line").css("display","block")
+		            })
+		          },
+		          error:function(error){
+		              console.log(error)
+		          }
+		      });
+		  }
+		  var oLanguageLeoCN = {
+				'sProcessing' : ' 处理中... ',
+				'sLengthMenu' : ' 显示  _MENU_ 项结果 ',
+				'sZeroRecords' : ' 没有匹配结果 ',
+				'sInfo' : ' 显示第_START_至_END_项结果，共_TOTAL_项 ',
+				'sInfoEmpty' : ' 显示第0至0项结果，共0项 ',
+				'sInfoFiltered' : ' (由_MAX_项结果过滤) ',
+				'sInfoPostFix' : '  ',
+				'sSearch' : ' 搜索: ',
+				'sUrl' : ' ',
+				'sEmptyTable' : ' 表中数据为空 ',
+				'sLoadingRecords' : ' 载入中... ',
+				'sInfoThousands' : ' , ',
+				'oPaginate' : {
+					'sFirst' : ' 首页 ',
+					'sPrevious' : ' 上页 ',
+					'sNext' : ' 下页 ',
+					'sLast' : ' 末页 '
+				},
+				'oAria' : {
+					'sSortAscending' : ' :以升序排列此列',
+					'sSortDescending' : ' :以降序排列此列 '
+				}
+			};
+			$.fn.DataTable.defaults.oLanguage = oLanguageLeoCN;//设置提示为中文
+		  
+			initialDataTable();//调用自定义函数
+			
+	}else{
+		alert("该问卷尚未发布！")
+	}
+}else{
+	window.location.href="register.jsp"
+}
 
-                        } ]
-                    })
-            
-            $("#question1_table_button").click(function(){
-                $("#question1_pie").css("display","none")
-                $("#question1_circle").css("display","none")
-                $("#question1_bar").css("display","none")
-                $("#question1_line").css("display","none")
-            })
-            $("#question1_pie_button").click(function(){
-                $("#question1_circle").css("display","none")
-                $("#question1_bar").css("display","none")
-                $("#question1_line").css("display","none")
-                $("#question1_pie").css("display","block")
-            })
-            $("#question1_circle_button").click(function(){
-                $("#question1_pie").css("display","none")
-                $("#question1_bar").css("display","none")
-                $("#question1_line").css("display","none")
-                $("#question1_circle").css("display","block")
-            })
-            $("#question1_bar_button").click(function(){
-                $("#question1_pie").css("display","none")
-                $("#question1_circle").css("display","none")
-                $("#question1_line").css("display","none")
-                $("#question1_bar").css("display","block")
-            })
-            $("#question1_line_button").click(function(){
-                $("#question1_pie").css("display","none")
-                $("#question1_circle").css("display","none")
-                $("#question1_bar").css("display","none")
-                $("#question1_line").css("display","block")
-            })
-          },
-          error:function(error){
-              console.log(error)
-          }
-      });
-  }
-  var oLanguageLeoCN = {
-		'sProcessing' : ' 处理中... ',
-		'sLengthMenu' : ' 显示  _MENU_ 项结果 ',
-		'sZeroRecords' : ' 没有匹配结果 ',
-		'sInfo' : ' 显示第_START_至_END_项结果，共_TOTAL_项 ',
-		'sInfoEmpty' : ' 显示第0至0项结果，共0项 ',
-		'sInfoFiltered' : ' (由_MAX_项结果过滤) ',
-		'sInfoPostFix' : '  ',
-		'sSearch' : ' 搜索: ',
-		'sUrl' : ' ',
-		'sEmptyTable' : ' 表中数据为空 ',
-		'sLoadingRecords' : ' 载入中... ',
-		'sInfoThousands' : ' , ',
-		'oPaginate' : {
-			'sFirst' : ' 首页 ',
-			'sPrevious' : ' 上页 ',
-			'sNext' : ' 下页 ',
-			'sLast' : ' 末页 '
-		},
-		'oAria' : {
-			'sSortAscending' : ' :以升序排列此列',
-			'sSortDescending' : ' :以降序排列此列 '
-		}
-	};
-	$.fn.DataTable.defaults.oLanguage = oLanguageLeoCN;//设置提示为中文
-  
-	initialDataTable();//调用自定义函数
-	
-	
 	
 })(jQuery);
 </script>

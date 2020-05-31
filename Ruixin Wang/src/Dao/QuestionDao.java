@@ -20,11 +20,11 @@ public class QuestionDao {
 	public QuestionDao() {
 		try {
 			  
-	          //1.¼ÓÔØÇı¶¯³ÌĞò
+	          //1.åŠ è½½é©±åŠ¨ç¨‹åº
 	    	  Class.forName("org.gjt.mm.mysql.Driver");
-		      //2. »ñµÃÊı¾İ¿âÁ¬½Ó
+		      //2. è·å¾—æ•°æ®åº“è¿æ¥
 		      conn = DriverManager.getConnection(URL, USER, PASSWORD);
-		      //3.²Ù×÷Êı¾İ¿â£¬ÊµÏÖÔöÉ¾¸Ä²é
+		      //3.æ“ä½œæ•°æ®åº“ï¼Œå®ç°å¢åˆ æ”¹æŸ¥
 		      stmt = conn.createStatement();
 		     
 		      
@@ -34,14 +34,14 @@ public class QuestionDao {
 		}
 	}
 	
-	//²éÑ¯
+	//æŸ¥è¯¢
 	public List<QuestionBean> query(int ID,int questionQueryType) throws SQLException {
 		  String sql="";
 		  if(questionQueryType==1) {
-			  //¸ù¾İuserID²éÑ¯
+			  //æ ¹æ®userIDæŸ¥è¯¢
 			  sql="select * from question where userID="+ID;
 		  }else if(questionQueryType==2){
-			  //¸ù¾İquestionnaireID²éÑ¯
+			  //æ ¹æ®questionnaireIDæŸ¥è¯¢
 			  sql="select * from question where questionnaireID="+ID;
 		  }
 		  
@@ -54,21 +54,27 @@ public class QuestionDao {
 		  return categories;
 	}
 	
-	//²åÈë
+	//æ’å…¥
 	public void add(int userID,String title,String content,int status,String publishTime,String tag1,String tag2,int cnt) throws SQLException {
 	    String sql  = "insert into question(userID,title,content,status,publishTime,tag1,tag2,cnt) values("+userID+",'"+title+"','"+content+"',"+status+",'"+publishTime+"','"+tag1+"','"+tag2+"',"+cnt+")";
 	    stmt.execute(sql);
 	}
 	
-	//¸üĞÂcnt
+	//æ›´æ–°cnt
 	public void cntUpdate(int questionnaireID,int cnt) throws SQLException{
 		String sql="update question set cnt="+cnt+" where questionnaireID="+questionnaireID;
 		stmt.execute(sql);
 	}
 	
-	//¸üĞÂstatus
+	//æ›´æ–°status
 	public void statusUpdate(int questionnaireID,int status) throws SQLException{
 		String sql="update question set status="+status+" where questionnaireID="+questionnaireID;
+		stmt.execute(sql);
+	}
+	
+	//æ›´æ–°é—®å·å†…å®¹
+	public void update(int questionnaireID,String title,String content,String tag1,String tag2) throws SQLException{
+		String sql="update question set title='"+title+"',content='"+content+"',tag1='"+tag1+"',tag2='"+tag2+"' where questionnaireID="+questionnaireID;
 		stmt.execute(sql);
 	}
 

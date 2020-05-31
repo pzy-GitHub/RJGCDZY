@@ -175,7 +175,7 @@
                         返回我的问卷
                     </div>
                 </a>
-                <a class="nav-items" href="">
+                <a class="nav-items" href="designQuestionnaire.jsp">
                     <div class="items-box">
                         <i class="icon testDesign-icon"></i>
                     </div>
@@ -183,7 +183,7 @@
                     <span class="items-name">设计问卷</span>
                     <em class="caret-left"></em>
                 </a>
-                <a class="nav-items" href="">
+                <a class="nav-items" href="sendQuestionnaire.jsp">
                     <div class="items-box">
                         <i class="icon issusPapers-icon"></i>
                     </div>
@@ -318,154 +318,165 @@
 <script type="text/javascript">
 (function ($) {
 var oTable;//定义变量名，用于存放dataTable对象，一般定义为全局的比较好
+var status=<%=session.getAttribute("status")%>
+var userID=<%=session.getAttribute("userID")%>
+if(userID!=null){
+	if(parseInt(status)==1 || parseInt(status)==2){
+		//定义一个函数：用于初始化datatable  
+		  function initialDataTable() {
+		  	//使用客户端分页，一次性拉去所有数据
+		      $.ajax({//使用ajax的方式获取
+		          url:"AnswerQueryServlet",//异步请求的接口地址
+		          type:"post",//请求方式
+		          dataType:"json",//期待的数据返回类型
+		          async:true,//是否异步
+		          data:{
+		          	'ID':1,
+		            'answerQueryType':2
+		          },
+		          success:function (data) {//服务器响应成功后执行的回调
+		              //初始化datatable
+		              if (typeof oTable != "undefined"){
+		                  //如果已经被实例化，则销毁再实例化
+		                  oTable.fnDestroy();
+		              }
+		          	  var resultList=data
+		          	  
+			          	var columnsArray=[
+			                {
+			                    "mData":"num",//读取数组的对象中的id属性
+			                    "sTitle":"序号",//表头
+			                    "width":"100px"
+			                },
+			                {
+			                    "mData":"status",
+			                    "sTitle":"状态",
+			                    "width":"100px"
+			                },
+			                {
+			                    "mData":"feedback",
+			                    "sTitle":"反馈",
+			                    "width":"100px"
+			                },
+			                {
+			                    "mData":"submitTime",
+			                    "sTitle":"提交时间",
+			                    "width":"100px"
+			                },
+			                {
+			                    "mData":"timeForWriting",
+			                    "sTitle":"填写时长",
+			                    "width":"100px"
+			                }
+			            ]
+		          	  
+		              for(var i=0;i<resultList.length;++i){
+			           	  var feedback=resultList[i]['feedback'];
+			           	  var status=resultList[i]['status'];
+			           	
+			           	  if(feedback=="1"){
+			           		  resultList[i]['feedback']="赞";
+			           	  }else if(feedback=="-1"){
+			           		  resultList[i]['feedback']="踩";
+			           	  }
+			           	  
+			           	  if(status=="1"){
+			           		  resultList[i]['status']="填写完毕";
+			           	  }else if(status=="0"){
+			           		  resultList[i]['status']="暂存";
+			           	  }
+			           	  
+			           	  resultList[i].num=i+1
+			           	  var content=JSON.parse(resultList[i]['content'])
+			           	  var answerlist=content['answerlist']
+			           	  for(var j=0;j<answerlist.length;++j){
+			           		  var question="question"+(j+1)
+			           		  resultList[i][question]=answerlist[j]['answer']
+			           	  }
+		              }
+		          	  console.log(resultList)
+		          	  
+		          	  var content=JSON.parse(resultList[0]['content'])
+			          var answerlist=content['answerlist']
+		           	  for(var j=0;j<answerlist.length;++j){
+		           		  
+		           		  var obj=new Object()
+		           		  obj.mData="question"+(j+1)
+		           		  var sTitle="问题"+(j+1)
+		           		  obj.sTitle=sTitle
+		           		  obj.width="100px"
+		           		  obj.sWidth="100px"
+		           		  columnsArray.push(obj)
+		           		  var question="question"+(j+1)
+		           		  $("#title").append("<th>"+question+"</th>")
+		           	  }
+		          	  console.log(columnsArray)
+		              
+		              oTable = $("#bootstrap-data-table-export").dataTable({//注意#infoTable是需创建为dataTable的表格,使用jQuery选择器
+		                  "bPaginate":true,//是否翻页功能
+		                  "sServerMethod":"POST",//若使用服务端分页，则设置请求方式为“POST”，可改
+		                  "bServerSide":false,//是否开启服务端分页(不开就是客户端分页)
+		                  "bProcessing":true,//是否显示加载ing
+		                  "bFilter":false,//是否开启过滤
+		                  "bSort":true,//是否开启排序
+		                  "searching":true,//是否开启搜索功能
+		                  "data":resultList,//若使用客户端分页，则将表格的数据填写到data属性中，需要数组,数组里面要求是对象
+		                  "sScrollX":true,
+		                  // 让表格的宽度不自适应 ，固定宽度。 如果不设置 表头和表中数据会分离
+		                   //表中的数据自适应 ，表头的宽度固定
+		                  "bAutoWidth":true,
+		                  "aoColumns":columnsArray,
+		                  dom: 'Bfrtip',
+		                  buttons: [{                  
+		                	  extend:'excelHtml5', //导出文件格式为excel
+		                	  text:'导出excel',  //按钮标题
+		                	  title:'问卷填写情况', //导出的excel标题
+		                	  className:'btn btn-primary', //按钮的class样式
+		                  }]
+		                  
+		              
+		              });
+		          },
+		          error:function(error){
+		              console.log(error)
+		          }
+		      });
+		  }
+		  var oLanguageLeoCN = {
+				'sProcessing' : ' 处理中... ',
+				'sLengthMenu' : ' 显示  _MENU_ 项结果 ',
+				'sZeroRecords' : ' 没有匹配结果 ',
+				'sInfo' : ' 显示第_START_至_END_项结果，共_TOTAL_项 ',
+				'sInfoEmpty' : ' 显示第0至0项结果，共0项 ',
+				'sInfoFiltered' : ' (由_MAX_项结果过滤) ',
+				'sInfoPostFix' : '  ',
+				'sSearch' : ' 搜索: ',
+				'sUrl' : ' ',
+				'sEmptyTable' : ' 表中数据为空 ',
+				'sLoadingRecords' : ' 载入中... ',
+				'sInfoThousands' : ' , ',
+				'oPaginate' : {
+					'sFirst' : ' 首页 ',
+					'sPrevious' : ' 上页 ',
+					'sNext' : ' 下页 ',
+					'sLast' : ' 末页 '
+				},
+				'oAria' : {
+					'sSortAscending' : ' :以升序排列此列',
+					'sSortDescending' : ' :以降序排列此列 '
+				}
+			};
+			$.fn.DataTable.defaults.oLanguage = oLanguageLeoCN;//设置提示为中文
+		  
+			initialDataTable();//调用自定义函数
+	}else{
+		alert("该问卷尚未发布！")
+	}
+}else{
+	window.location.href="register.jsp"
+}
 
-//定义一个函数：用于初始化datatable  
-  function initialDataTable() {
-  	//使用客户端分页，一次性拉去所有数据
-      $.ajax({//使用ajax的方式获取
-          url:"AnswerQueryServlet",//异步请求的接口地址
-          type:"post",//请求方式
-          dataType:"json",//期待的数据返回类型
-          async:true,//是否异步
-          data:{
-          	'ID':1,
-            'answerQueryType':2
-          },
-          success:function (data) {//服务器响应成功后执行的回调
-              //初始化datatable
-              if (typeof oTable != "undefined"){
-                  //如果已经被实例化，则销毁再实例化
-                  oTable.fnDestroy();
-              }
-          	  var resultList=data
-          	  
-	          	var columnsArray=[
-	                {
-	                    "mData":"num",//读取数组的对象中的id属性
-	                    "sTitle":"序号",//表头
-	                    "width":"100px"
-	                },
-	                {
-	                    "mData":"status",
-	                    "sTitle":"状态",
-	                    "width":"100px"
-	                },
-	                {
-	                    "mData":"feedback",
-	                    "sTitle":"反馈",
-	                    "width":"100px"
-	                },
-	                {
-	                    "mData":"submitTime",
-	                    "sTitle":"提交时间",
-	                    "width":"100px"
-	                },
-	                {
-	                    "mData":"timeForWriting",
-	                    "sTitle":"填写时长",
-	                    "width":"100px"
-	                }
-	            ]
-          	  
-              for(var i=0;i<resultList.length;++i){
-	           	  var feedback=resultList[i]['feedback'];
-	           	  var status=resultList[i]['status'];
-	           	
-	           	  if(feedback=="1"){
-	           		  resultList[i]['feedback']="赞";
-	           	  }else if(feedback=="-1"){
-	           		  resultList[i]['feedback']="踩";
-	           	  }
-	           	  
-	           	  if(status=="1"){
-	           		  resultList[i]['status']="填写完毕";
-	           	  }else if(status=="0"){
-	           		  resultList[i]['status']="暂存";
-	           	  }
-	           	  
-	           	  resultList[i].num=i+1
-	           	  var content=JSON.parse(resultList[i]['content'])
-	           	  var answerlist=content['answerlist']
-	           	  for(var j=0;j<answerlist.length;++j){
-	           		  var question="question"+(j+1)
-	           		  resultList[i][question]=answerlist[j]['answer']
-	           	  }
-              }
-          	  console.log(resultList)
-          	  
-          	  var content=JSON.parse(resultList[0]['content'])
-	          var answerlist=content['answerlist']
-           	  for(var j=0;j<answerlist.length;++j){
-           		  
-           		  var obj=new Object()
-           		  obj.mData="question"+(j+1)
-           		  var sTitle="问题"+(j+1)
-           		  obj.sTitle=sTitle
-           		  obj.width="100px"
-           		  obj.sWidth="100px"
-           		  columnsArray.push(obj)
-           		  var question="question"+(j+1)
-           		  $("#title").append("<th>"+question+"</th>")
-           	  }
-          	  console.log(columnsArray)
-              
-              oTable = $("#bootstrap-data-table-export").dataTable({//注意#infoTable是需创建为dataTable的表格,使用jQuery选择器
-                  "bPaginate":true,//是否翻页功能
-                  "sServerMethod":"POST",//若使用服务端分页，则设置请求方式为“POST”，可改
-                  "bServerSide":false,//是否开启服务端分页(不开就是客户端分页)
-                  "bProcessing":true,//是否显示加载ing
-                  "bFilter":false,//是否开启过滤
-                  "bSort":true,//是否开启排序
-                  "searching":true,//是否开启搜索功能
-                  "data":resultList,//若使用客户端分页，则将表格的数据填写到data属性中，需要数组,数组里面要求是对象
-                  "sScrollX":true,
-                  // 让表格的宽度不自适应 ，固定宽度。 如果不设置 表头和表中数据会分离
-                   //表中的数据自适应 ，表头的宽度固定
-                  "bAutoWidth":true,
-                  "aoColumns":columnsArray,
-                  dom: 'Bfrtip',
-                  buttons: [{                  
-                	  extend:'excelHtml5', //导出文件格式为excel
-                	  text:'导出excel',  //按钮标题
-                	  title:'问卷填写情况', //导出的excel标题
-                	  className:'btn btn-primary', //按钮的class样式
-                  }]
-                  
-              
-              });
-          },
-          error:function(error){
-              console.log(error)
-          }
-      });
-  }
-  var oLanguageLeoCN = {
-		'sProcessing' : ' 处理中... ',
-		'sLengthMenu' : ' 显示  _MENU_ 项结果 ',
-		'sZeroRecords' : ' 没有匹配结果 ',
-		'sInfo' : ' 显示第_START_至_END_项结果，共_TOTAL_项 ',
-		'sInfoEmpty' : ' 显示第0至0项结果，共0项 ',
-		'sInfoFiltered' : ' (由_MAX_项结果过滤) ',
-		'sInfoPostFix' : '  ',
-		'sSearch' : ' 搜索: ',
-		'sUrl' : ' ',
-		'sEmptyTable' : ' 表中数据为空 ',
-		'sLoadingRecords' : ' 载入中... ',
-		'sInfoThousands' : ' , ',
-		'oPaginate' : {
-			'sFirst' : ' 首页 ',
-			'sPrevious' : ' 上页 ',
-			'sNext' : ' 下页 ',
-			'sLast' : ' 末页 '
-		},
-		'oAria' : {
-			'sSortAscending' : ' :以升序排列此列',
-			'sSortDescending' : ' :以降序排列此列 '
-		}
-	};
-	$.fn.DataTable.defaults.oLanguage = oLanguageLeoCN;//设置提示为中文
-  
-	initialDataTable();//调用自定义函数
+
 	
 })(jQuery);
 </script>

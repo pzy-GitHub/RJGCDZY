@@ -265,8 +265,8 @@
                                 </div>
 
                                 <div id="questionnaire-url" style="margin: 0 40px 0 40px;height: 200px;">
-                                   <div id="photo" style="border: 1px dashed grey;height:153px;width: 153px;float: left;">
-                                     <img id='qcode' src='' width='150' height='150' alt='网址URL 二维码生成' />
+                                   <div id="photo" style="border: 1px dashed grey;height:153px;width: 153px;float: left;padding: 10px 0 0 10px">
+                                     <div id="qrcode"></div>
                                    </div>
                                    <div class="detailed-box pull-left" style="float: left;width: 500px;height:100px;margin-left: 30px;">
                                       <span class="pull-left strong" style="height: 40px;width:200px;font-size: 20px">问卷链接与二维码</span>
@@ -276,7 +276,8 @@
                                       </div>
                                       
                                    </div>
-                                   <button type="button" id="download-photo" class="btn btn-primary" style="margin-top: 20px;border-radius: 5px;margin-left: 30px;color:white;background-color:#4FBFA8;border-color:#4FBFA8;float: left;" onclick="downloadImg()">下载二维码</button>
+                                   <a id="downloadLink"></a>
+                                   <button type="button" id="download-photo" class="btn btn-primary" style="margin-top: 20px;border-radius: 5px;margin-left: 30px;color:white;background-color:#4FBFA8;border-color:#4FBFA8;float: left;" onclick="downloadClick()">下载二维码</button>
                                    <button type="button" id="copy" class="btn btn-primary" style="margin-top: 20px;border-radius: 5px;margin-left: 20px;color:white;background-color:#4FBFA8;border-color:#4FBFA8;float: left;">复制</button>
                                    <button type="button" id="enter" class="btn btn-primary" style="margin-top: 20px;border-radius: 5px;margin-left: 20px;color:white;background-color:#4FBFA8;border-color:#4FBFA8;float: left;">打开</button>
                                 </div>
@@ -311,6 +312,7 @@
 </body>
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 <script src="js/download.js"></script>
+<script src="js/qrcode.js"></script>
 <script type="text/javascript">
 var status=<%=session.getAttribute("status")%>
 var userID=<%=session.getAttribute("userID")%>
@@ -329,30 +331,30 @@ if(userID!=null){
 	window.location.href="register.jsp"
 }
 
-function downloadImg() {
-    var img = new Image()
-    img.onload = function() {
-        var canvas = document.createElement('canvas')
-        canvas.width = img.width
-        canvas.height = img.height
-        var ctx = canvas.getContext('2d')
-        // 将img中的内容画到画布上
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        // 将画布内容转换为Blob
-        canvas.toBlob(function(blob){
-            // blob转为同源url
-            var blobUrl = window.URL.createObjectURL(blob)
-            // 创建a链接
-            var a = document.createElement('a')
-            a.href = blobUrl
-            a.download = '问卷二维码.png'
-            // 触发a链接点击事件，浏览器开始下载文件
-            a.click()
-        })
-    }
-	img.src = $('#qcode')[0].src
-	// 必须设置，否则canvas中的内容无法转换为blob
-	img.setAttribute('crossOrigin', 'Anonymous')
+var questionnaireID=<%=session.getAttribute("questionnaireID")%>
+var questionnaireURL="http://175.24.74.8/SoftwareProject/writeQuestionnaire.jsp?questionnaireID="+questionnaireID
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: questionnaireURL,
+    width: 130, //生成的二维码的宽度
+    height: 130, //生成的二维码的高度
+    colorDark : "#000000", // 生成的二维码的深色部分
+    colorLight : "#ffffff", //生成二维码的浅色部分
+    correctLevel : QRCode.CorrectLevel.H
+  });
+
+function downloadClick () {
+    // 获取base64的图片节点
+    var img = $('#qrcode img')[0];
+    // 构建画布
+    var canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    canvas.getContext('2d').drawImage(img, 0, 0);
+    // 构造url
+    url = canvas.toDataURL('image/png');
+    // 构造a标签并模拟点击
+    var downloadLink = $('#downloadLink').attr("href", url).attr("download", "问卷二维码.png");
+    downloadLink[0].click();
 }
 
 $("#copy").click(function() { 

@@ -320,6 +320,7 @@
 var oTable;//定义变量名，用于存放dataTable对象，一般定义为全局的比较好
 var status=<%=session.getAttribute("status")%>
 var userID=<%=session.getAttribute("userID")%>
+var questionnaireID=<%=session.getAttribute("questionnaireID")%>
 if(userID!=null){
 	if(parseInt(status)==1 || parseInt(status)==2){
 		//定义一个函数：用于初始化datatable  
@@ -331,8 +332,8 @@ if(userID!=null){
 		          dataType:"json",//期待的数据返回类型
 		          async:true,//是否异步
 		          data:{
-		          	'ID':1,
-		            'answerQueryType':2
+		          	'ID':questionnaireID,
+		                'answerQueryType':2
 		          },
 		          success:function (data) {//服务器响应成功后执行的回调
 		              //初始化datatable

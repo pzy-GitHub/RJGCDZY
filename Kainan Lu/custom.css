@@ -1,8 +1,9 @@
 /* your styles go here */
-a.title-btn{
+button.title-btn{
+    background-color: white;
     color: black;
-    font: bolder;
-    font-size: 30px;
+    border: none;
+    font-size: 40px;
 }
 
 .mytitle{
@@ -76,7 +77,7 @@ a.title-btn{
 
 #content .bar{
     padding-top: 30px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -90,5 +91,18 @@ a.title-btn{
     padding-left: 40px;
 }
 
+#choosetype{
+    text-align: center;
+}
 
+#choosetype select{
+    width: 35%;
+    margin: 20px;
+    padding: 10px;
+    
+}
+
+#save{
+    text-align: right;
+}
 

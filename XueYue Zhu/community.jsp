@@ -40,65 +40,8 @@
   </head>
   <body>
     <div id="all">
-      <!-- Top bar-->
-      <div class="top-bar">
-        <div class="container">
-          <div class="row d-flex align-items-center">
-            <div class="col-md-6 d-md-block d-none">
-            </div>
-            <div class="col-md-6">
-              <div class="d-flex justify-content-md-end justify-content-between">
-                <ul class="list-inline contact-info d-block d-md-none">
-                  <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
-                  <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
-                </ul>
-                <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a href="customer-register.html" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Sign Up</span></a></div>
-                <ul class="social-custom list-inline">
-                  <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                  <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                  <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Top bar end-->
-      <!-- Login Modal-->
-      <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
-        <div role="document" class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 id="login-modalLabel" class="modal-title">Customer Login</h4>
-              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-            </div>
-            <div class="modal-body">
-              <form action="customer-orders.html" method="get">
-                <div class="form-group">
-                  <input id="email_modal" type="text" placeholder="email" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input id="password_modal" type="password" placeholder="password" class="form-control">
-                </div>
-                <p class="text-center">
-                  <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
-                </p>
-              </form>
-              <p class="text-center text-muted">Not registered yet?</p>
-              <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Login modal end-->
-      <!-- Navbar Start-->
-      <header class="nav-holder make-sticky">
-        <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-          
-        </div>
-      </header>
-      <!-- Navbar End-->
+   
+ 
       
       <div id="heading-breadcrumbs">
         <div class="container">
@@ -250,6 +193,72 @@
                       <h3><a id="title10">《关于喜茶的喜爱度调查》</a></h3>
                       <p class="read-more text-right"><a id="hre10"  class="btn btn-template-outlined">点击填写</a></p>
                   </div>
+                        
+                  <div class="post" id="qe1" style="display:none">
+
+                      <div class="row" >
+                          <div class="col-sm-6">
+                              <p class="author-category">By <a id="name11">wink</a></p>
+                          </div>
+                          <div class="col-sm-6 text-right">
+                              <p class="date-comments"><i class="fa fa-calendar-o"></i><a id="time11"> June 20, 2020</a></p>
+                          </div>
+                      </div>
+                      <h3><a id="title11">《关于喜茶的喜爱度调查》</a></h3>
+                      <p class="read-more text-right"><a id="hre11"  class="btn btn-template-outlined">点击填写</a></p>
+                  </div>
+                  <div class="post" id="qe2" style="display:none">
+
+                      <div class="row" >
+                          <div class="col-sm-6">
+                              <p class="author-category">By <a id="name12">wink</a></p>
+                          </div>
+                          <div class="col-sm-6 text-right">
+                              <p class="date-comments"><i class="fa fa-calendar-o"></i><a id="time12"> June 20, 2020</a></p>
+                          </div>
+                      </div>
+                      <h3><a id="title12">《关于喜茶的喜爱度调查》</a></h3>
+                         <p class="read-more text-right"><a id="hre12"  class="btn btn-template-outlined">点击填写</a></p>
+                  </div>
+                  <div class="post" id="qe3" style="display:none">
+
+                      <div class="row" >
+                          <div class="col-sm-6">
+                              <p class="author-category">By <a id="name13">wink</a></p>
+                          </div>
+                          <div class="col-sm-6 text-right">
+                              <p class="date-comments"><i class="fa fa-calendar-o"></i><a id="time13"> June 20, 2020</a></p>
+                          </div>
+                      </div>
+                      <h3><a id="title13">《关于喜茶的喜爱度调查》</a></h3>
+                        <p class="read-more text-right"><a id="hre13"  class="btn btn-template-outlined">点击填写</a></p>
+                  </div>
+                  <div class="post" id="qe4" style="display:none">
+
+                      <div class="row" >
+                          <div class="col-sm-6">
+                              <p class="author-category">By <a id="name14">wink</a></p>
+                          </div>
+                          <div class="col-sm-6 text-right">
+                              <p class="date-comments"><i class="fa fa-calendar-o"></i><a id="time14"> June 20, 2020</a></p>
+                          </div>
+                      </div>
+                      <h3><a id="title14">《关于喜茶的喜爱度调查》</a></h3>
+                        <p class="read-more text-right"><a id="hre14"  class="btn btn-template-outlined">点击填写</a></p>
+                  </div>
+                   <div class="post" id="qe5" style="display:none">
+
+                      <div class="row" >
+                          <div class="col-sm-6">
+                              <p class="author-category">By <a id="name15">wink</a></p>
+                          </div>
+                          <div class="col-sm-6 text-right">
+                              <p class="date-comments"><i class="fa fa-calendar-o"></i><a id="time15"> June 20, 2020</a></p>
+                          </div>
+                      </div>
+                      <h3><a id="title15">《关于喜茶的喜爱度调查》</a></h3>
+                      <p class="read-more text-right"><a id="hre15"  class="btn btn-template-outlined">点击填写</a></p>
+                  </div>
                   
                   
                   <ul class="pager list-unstyled d-flex align-items-center justify-content-between">
@@ -267,7 +276,7 @@
                 <div class="panel-body">
                   <form name="myform" role="search">
                     <div class="input-group">
-                      <input id="searchinput" type="text" placeholder="Search" class="form-control" onkeydown="searchenter(event)"><span class="input-group-btn">
+                      <input id="searchinput" type="text" placeholder="Search" class="form-control" ><span class="input-group-btn">
                         <button onclick="findIt()" id="search" type="button" class="btn btn-template-main" ><i class="fa fa-search"></i></button></span>
                     </div>
                   </form>
@@ -276,11 +285,11 @@
              
               <div class="panel sidebar-menu">
                   <div class="panel-heading">
-                      <h3 class="h4 panel-title">Tags</h3>
+                      <h3 class="h4 panel-title">Tags(请点击二级标签查询)</h3>
                   </div>
                   <div class="panel-body">
                       <ul class="tag-cloud list-inline">
-                          <li class="nav-item"><a class="nav-link ">教育培训</a></li>
+                          <li class="nav-item"><a href="#" class="nav-link ">教育培训</a></li>
                           <li class="list-inline-item"><a href="#" value="企业培训"><i class="fa fa-tags"></i> 企业培训</a></li>
                           <li class="list-inline-item"><a href="#" value="学校教育"><i class="fa fa-tags"></i> 学校教育</a></li>
                           <li class="list-inline-item"><a href="#" value="阅读研究"><i class="fa fa-tags"></i> 阅读研究</a></li>
@@ -289,7 +298,7 @@
                   </div>
                   <div class="panel-body">
                       <ul class="tag-cloud list-inline">
-                          <li class="nav-item"><a href="blog.html" class="nav-link ">生活日常</a></li>
+                          <li class="nav-item"><a  href="#" class="nav-link ">生活日常</a></li>
                           <li class="list-inline-item"><a href="#" value="升学就业"><i class="fa fa-tags"></i> 升学就业</a></li>
                           <li class="list-inline-item"><a href="#" value="消费情况"><i class="fa fa-tags"></i> 消费情况</a></li>
                           <li class="list-inline-item"><a href="#" value="恋爱婚姻"><i class="fa fa-tags"></i> 恋爱婚姻</a></li>
@@ -301,7 +310,7 @@
                   </div>
                   <div class="panel-body">
                       <ul class="tag-cloud list-inline">
-                          <li class="nav-item"><a href="blog.html" class="nav-link ">市场调研</a></li>
+                          <li class="nav-item"><a  href="#" class="nav-link ">市场调研</a></li>
                           <li class="list-inline-item"><a href="#" value="环境环保"><i class="fa fa-tags"></i> 环境环保</a></li>
                           <li class="list-inline-item"><a href="#" value="医疗健康"><i class="fa fa-tags"></i> 医疗健康</a></li>
                           <li class="list-inline-item"><a href="#" value="游戏产业"><i class="fa fa-tags"></i> 游戏产业</a></li>
@@ -336,7 +345,7 @@
    
     <script type="text/javascript">
     var  existid=new Array();
-
+    var  userID=<%=session.getAttribute("userID")%>;
     async function getquestionnaire(questionnaireID){
     	var getdata;
     	await $.ajax({
@@ -347,7 +356,8 @@
              "ID":questionnaireID,
              "questionQueryType":2
              },
-            success: function(data){	
+            success: function(data){
+
             	getdata=data
     
             	   }
@@ -443,19 +453,21 @@
     	
     }
 
-    $.ajax({  	
-    	url:"UserQueryServlet",
+   $.ajax({  	
+    	url:"UsersQueryServlet",
         type:"get",
         dataType:"json",
         data:{
-         "userID":1
+         "userID":userID
          },
         success: function(data){
+        	console.log(data)
             var age = data[0]["age"]
         	var education=data[0]["education"]
         	var job=data[0]["job"]
         	var area=data[0]["area"]
         	var gender=data[0]["gender"]
+        	console.log(gender)
             $.ajax({
             	cache: false,
             	url:"GroupQueryServlet",
@@ -469,6 +481,7 @@
                 	"area":area    
                  },
                  success:function(data){
+                	 console.log(data)
                 	 var questionnaireID1 = null
                      var questionnaireID2 = null
                 	 var questionnaireID3 = null
@@ -525,7 +538,7 @@
                 	        type:"get",
                 	        dataType:"json",
                 	        data:{
-                	         "userID":981026
+                	         "userID":userID
                 	         },
                 	         success: function(data){
                 	        	
@@ -594,12 +607,21 @@
         }
     });
   
-    
-   
+  
     </script>
     <script type="text/javascript">
     function findIt()
     {   
+    	    document.getElementById('qeone').style.display = 'none';
+    		document.getElementById('qetwo').style.display = 'none';
+    		document.getElementById('qethree').style.display = 'none';
+    		document.getElementById('qefour').style.display = 'none';
+    		document.getElementById('qefive').style.display = 'none';
+    		document.getElementById('qesix').style.display = 'none';
+    		document.getElementById('qeseven').style.display = 'none';
+    		document.getElementById('qeeight').style.display = 'none';
+    		document.getElementById('qenine').style.display = 'none';
+    		document.getElementById('qeten').style.display = 'none';
     	var key = document.getElementById("searchinput").value;
     	
     	$.ajax({
@@ -610,109 +632,63 @@
              "word":key
              },
             success: function(data){
-            	   
-            	   if(data[0] != null){
-            		   $("#name1").text(data[0]["userID"])
-                       $("#time1").text(data[0]["publishTime"])
-                       $("#title1").text(data[0]["title"])
-                       var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[0]["questionnaireID"]);   //使用encodeURI编码
-                       document.getElementById('hre1').href=searchUrl
-   
-            	   }
-            	   else{
-            		   document.getElementById('qeone').style.display = 'none';
-            		   
-            	   }
-            	   if(data[1] != null){
-            		   $("#name2").text(data[1]["userID"])
-                       $("#time2").text(data[1]["publishTime"])
-                       $("#title2").text(data[1]["title"])
-                       var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[1]["questionnaireID"]);   //使用encodeURI编码
-                       document.getElementById('hre2').href=searchUrl
-            	   }
-            	   else{
-            		   document.getElementById('qetwo').style.display = 'none';
-            	   }
-            	   if(data[2] != null){
-            		   $("#name3").text(data[2]["userID"])
-                       $("#time3").text(data[2]["publishTime"])
-                       $("#title3").text(data[2]["title"])
-                       var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[2]["questionnaireID"]);   //使用encodeURI编码
-                       document.getElementById('hre3').href=searchUrl
-            	   }
-            	   else{
-            		   document.getElementById('qethree').style.display = 'none';
-            	   }
-            	   if(data[3] != null){
-            		   $("#name4").text(data[3]["userID"])
-                       $("#time4").text(data[3]["publishTime"])
-                       $("#title4").text(data[3]["title"])
-                       var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[3]["questionnaireID"]);   //使用encodeURI编码
-                       document.getElementById('hre4').href=searchUrl
-            	   }
-            	   else{
-            		   document.getElementById('qefour').style.display = 'none';
-            	   }
-            	   if(data[4] != null){
-            		   $("#name5").text(data[4]["userID"])
-                       $("#time5").text(data[4]["publishTime"])
-                       $("#title5").text(data[4]["title"]) 
-                       var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[4]["questionnaireID"]);   //使用encodeURI编码
-                       document.getElementById('hre5').href=searchUrl
-            	   }
-            	   else{
-            		   document.getElementById('qefive').style.display = 'none';
-            	   }
-              	   if(data[5] != null){
-              		   $("#name6").text(data[5]["questionnaireID"])
-                         $("#time6").text(data[5]["publishTime"])
-                         $("#title6").text(data[5]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[5]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre6').href=searchUrl
+            	
+           
+              	   if(data[0] != null){
+              		 document.getElementById('qe1').style.display = 'inline';
+              		   $("#name11").text(data[0]["questionnaireID"])
+                         $("#time11").text(data[0]["publishTime"])
+                         $("#title11").text(data[0]["title"])
+                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[0]["questionnaireID"]);   //使用encodeURI编码
+                         document.getElementById('hre11').href=searchUrl
               	   }
               	   else{
-              		   document.getElementById('qesix').style.display = 'none';
+              		   document.getElementById('qe1').style.display = 'none';
               		   
               	   }
-              	   if(data[6] != null){
-              		   $("#name7").text(data[6]["questionnaireID"])
-                         $("#time7").text(data[6]["publishTime"])
-                         $("#title7").text(data[6]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[6]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre7').href=searchUrl
+              	   if(data[1] != null){
+              		 document.getElementById('qe2').style.display = 'inline';
+              		   $("#name12").text(data[1]["questionnaireID"])
+                         $("#time12").text(data[1]["publishTime"])
+                         $("#title12").text(data[1]["title"])
+                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[1]["questionnaireID"]);   //使用encodeURI编码
+                         document.getElementById('hre12').href=searchUrl
               	   }
               	   else{
-              		   document.getElementById('qeseven').style.display = 'none';
+              		   document.getElementById('qe2').style.display = 'none';
               	   }
-              	   if(data[7] != null){
-              		   $("#name8").text(data[7]["questionnaireID"])
-                         $("#time8").text(data[7]["publishTime"])
-                         $("#title8").text(data[7]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[7]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre8').href=searchUrl
-              	   }
-              	   else{
-              		   document.getElementById('qeeight').style.display = 'none';
-              	   }
-              	   if(data[8] != null){
-              		   $("#name9").text(data[8]["questionnaireID"])
-                         $("#time9").text(data[8]["publishTime"])
-                         $("#title9").text(data[8]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[8]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre9').href=searchUrl
+              	   if(data[2] != null){
+              		 document.getElementById('qe3').style.display = 'inline';
+              		   $("#name13").text(data[2]["questionnaireID"])
+                         $("#time13").text(data[2]["publishTime"])
+                         $("#title13").text(data[2]["title"])
+                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[2]["questionnaireID"]);   //使用encodeURI编码
+                         document.getElementById('hre13').href=searchUrl
               	   }
               	   else{
-              		   document.getElementById('qenine').style.display = 'none';
+              		   document.getElementById('qe3').style.display = 'none';
               	   }
-              	   if(data[9] != null){
-              		   $("#name10").text(data[9]["questionnaireID"])
-                         $("#time10").text(data[9]["publishTime"])
-                         $("#title10").text(data[9]["title"]) 
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[9]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre10').href=searchUrl
+              	   if(data[3] != null){
+              		  document.getElementById('qe4').style.display = 'inline';
+              		   $("#name14").text(data[3]["questionnaireID"])
+                         $("#time14").text(data[3]["publishTime"])
+                         $("#title14").text(data[3]["title"])
+                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[3]["questionnaireID"]);   //使用encodeURI编码
+                         document.getElementById('hre14').href=searchUrl
               	   }
               	   else{
-              		   document.getElementById('qeten').style.display = 'none';
+              		   document.getElementById('qe4').style.display = 'none';
+              	   }
+              	   if(data[4] != null){
+              		 document.getElementById('qe5').style.display = 'inline';
+              		   $("#name15").text(data[4]["questionnaireID"])
+                         $("#time15").text(data[4]["publishTime"])
+                         $("#title15").text(data[4]["title"]) 
+                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[4]["questionnaireID"]);   //使用encodeURI编码
+                         document.getElementById('hre15').href=searchUrl
+              	   }
+              	   else{
+              		   document.getElementById('qe5').style.display = 'none';
               	   }
               		          
             		          
@@ -723,6 +699,17 @@
     </script>
     <script type="text/javascript">
         $('.panel-body a').click(function(){
+        	document.getElementById('qeone').style.display = 'none';
+     		document.getElementById('qetwo').style.display = 'none';
+     		document.getElementById('qethree').style.display = 'none';
+     		document.getElementById('qefour').style.display = 'none';
+     		document.getElementById('qefive').style.display = 'none';
+     		document.getElementById('qesix').style.display = 'none';
+     		document.getElementById('qeseven').style.display = 'none';
+     		document.getElementById('qeeight').style.display = 'none';
+     		document.getElementById('qenine').style.display = 'none';
+     		document.getElementById('qeten').style.display = 'none';
+        	var key = document.getElementById("searchinput").value;
         	var tag = "";
         	tag = $(this).attr("value");
         	$.ajax({
@@ -733,109 +720,63 @@
                  "tag":tag
                  },
                  success: function(data){
-                 console.log(data)
-              	   if(data[0] != null){
-              		   $("#name1").text(data[0]["userID"])
-                         $("#time1").text(data[0]["publishTime"])
-                         $("#title1").text(data[0]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[0]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre1').href=searchUrl
-              	   }
-              	   else{
-              		   document.getElementById('qeone').style.display = 'none';
-              		   
-              	   }
-              	   if(data[1] != null){
-              		   $("#name2").text(data[1]["userID"])
-                         $("#time2").text(data[1]["publishTime"])
-                         $("#title2").text(data[1]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[1]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre2').href=searchUrl
-              	   }
-              	   else{
-              		   document.getElementById('qetwo').style.display = 'none';
-              	   }
-              	   if(data[2] != null){
-              		   $("#name3").text(data[2]["userID"])
-                         $("#time3").text(data[2]["publishTime"])
-                         $("#title3").text(data[2]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[2]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre3').href=searchUrl
-              	   }
-              	   else{
-              		   document.getElementById('qethree').style.display = 'none';
-              	   }
-              	   if(data[3] != null){
-              		   $("#name4").text(data[3]["userID"])
-                         $("#time4").text(data[3]["publishTime"])
-                         $("#title4").text(data[3]["title"])
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[3]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre4').href=searchUrl
-              	   }
-              	   else{
-              		   document.getElementById('qefour').style.display = 'none';
-              	   }
-              	   if(data[4] != null){
-              		   $("#name5").text(data[4]["userID"])
-                         $("#time5").text(data[4]["publishTime"])
-                         $("#title5").text(data[4]["title"]) 
-                         var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[4]["questionnaireID"]);   //使用encodeURI编码
-                         document.getElementById('hre5').href=searchUrl
-              	   }
-              	   else{
-              		   document.getElementById('qefive').style.display = 'none';
-              	   }
-              	  if(data[5] != null){
-             		   $("#name6").text(data[5]["questionnaireID"])
-                        $("#time6").text(data[5]["publishTime"])
-                        $("#title6").text(data[5]["title"])
-                        var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[5]["questionnaireID"]);   //使用encodeURI编码
-                        document.getElementById('hre6').href=searchUrl
-             	   }
-             	   else{
-             		   document.getElementById('qesix').style.display = 'none';
-             		   
-             	   }
-             	   if(data[6] != null){
-             		   $("#name7").text(data[6]["questionnaireID"])
-                        $("#time7").text(data[6]["publishTime"])
-                        $("#title7").text(data[6]["title"])
-                        var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[6]["questionnaireID"]);   //使用encodeURI编码
-                        document.getElementById('hre7').href=searchUrl
-             	   }
-             	   else{
-             		   document.getElementById('qeseven').style.display = 'none';
-             	   }
-             	   if(data[7] != null){
-             		   $("#name8").text(data[7]["questionnaireID"])
-                        $("#time8").text(data[7]["publishTime"])
-                        $("#title8").text(data[7]["title"])
-                        var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[7]["questionnaireID"]);   //使用encodeURI编码
-                        document.getElementById('hre8').href=searchUrl
-             	   }
-             	   else{
-             		   document.getElementById('qeeight').style.display = 'none';
-             	   }
-             	   if(data[8] != null){
-             		   $("#name9").text(data[8]["questionnaireID"])
-                        $("#time9").text(data[8]["publishTime"])
-                        $("#title9").text(data[8]["title"])
-                        var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[8]["questionnaireID"]);   //使用encodeURI编码
-                        document.getElementById('hre9').href=searchUrl
-             	   }
-             	   else{
-             		   document.getElementById('qenine').style.display = 'none';
-             	   }
-             	   if(data[9] != null){
-             		   $("#name10").text(data[9]["questionnaireID"])
-                        $("#time10").text(data[9]["publishTime"])
-                        $("#title10").text(data[9]["title"]) 
-                        var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[9]["questionnaireID"]);   //使用encodeURI编码
-                        document.getElementById('hre10').href=searchUrl
-             	   }
-             	   else{
-             		   document.getElementById('qeten').style.display = 'none';
-             	   }
+                 
+                	 if(data[0] != null){
+                  		 document.getElementById('qe1').style.display = 'inline';
+                  		   $("#name11").text(data[0]["questionnaireID"])
+                             $("#time11").text(data[0]["publishTime"])
+                             $("#title11").text(data[0]["title"])
+                             var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[0]["questionnaireID"]);   //使用encodeURI编码
+                             document.getElementById('hre11').href=searchUrl
+                  	   }
+                  	   else{
+                  		   document.getElementById('qe1').style.display = 'none';
+                  		   
+                  	   }
+                  	   if(data[1] != null){
+                  		 document.getElementById('qe2').style.display = 'inline';
+                  		   $("#name12").text(data[1]["questionnaireID"])
+                             $("#time12").text(data[1]["publishTime"])
+                             $("#title12").text(data[1]["title"])
+                             var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[1]["questionnaireID"]);   //使用encodeURI编码
+                             document.getElementById('hre12').href=searchUrl
+                  	   }
+                  	   else{
+                  		   document.getElementById('qe2').style.display = 'none';
+                  	   }
+                  	   if(data[2] != null){
+                  		 document.getElementById('qe3').style.display = 'inline';
+                  		   $("#name13").text(data[2]["questionnaireID"])
+                             $("#time13").text(data[2]["publishTime"])
+                             $("#title13").text(data[2]["title"])
+                             var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[2]["questionnaireID"]);   //使用encodeURI编码
+                             document.getElementById('hre13').href=searchUrl
+                  	   }
+                  	   else{
+                  		   document.getElementById('qe3').style.display = 'none';
+                  	   }
+                  	   if(data[3] != null){
+                  		  document.getElementById('qe4').style.display = 'inline';
+                  		   $("#name14").text(data[3]["questionnaireID"])
+                             $("#time14").text(data[3]["publishTime"])
+                             $("#title14").text(data[3]["title"])
+                             var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[3]["questionnaireID"]);   //使用encodeURI编码
+                             document.getElementById('hre14').href=searchUrl
+                  	   }
+                  	   else{
+                  		   document.getElementById('qe4').style.display = 'none';
+                  	   }
+                  	   if(data[4] != null){
+                  		 document.getElementById('qe5').style.display = 'inline';
+                  		   $("#name15").text(data[4]["questionnaireID"])
+                             $("#time15").text(data[4]["publishTime"])
+                             $("#title15").text(data[4]["title"]) 
+                             var searchUrl =encodeURI('writeQuestionnaire.jsp?questionnaireID='+ data[4]["questionnaireID"]);   //使用encodeURI编码
+                             document.getElementById('hre15').href=searchUrl
+                  	   }
+                  	   else{
+                  		   document.getElementById('qe5').style.display = 'none';
+                  	   }
               		          
                   }
                 });	
